@@ -84,6 +84,7 @@ public class PublicController {
     public ResponseEntity<List<User>> getUserSA() {
         try {
             log.info("Inside getUserSA..");
+            System.out.println("test");
             List<User> userList = userRepository.getUserForSA();
             return new ResponseEntity<>(userList, HttpStatus.OK);
         } catch (RuntimeException e) {
