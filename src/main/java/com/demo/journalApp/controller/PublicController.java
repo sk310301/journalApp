@@ -96,11 +96,11 @@ public class PublicController {
     public ResponseEntity<String> sendMail(@RequestBody Email email) {
         try {
             log.info("Inside sendMail for email : {}", email);
-            emailService.sendMail(email.getTo(), email.getSubject(), email.getBody());
+            emailService.sendMail(email.getTo(), email.getSubject(), email.getBody(), email.getCc(), email.getBcc());
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             log.error("Error in sendMail due to : {}", e.getMessage());
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
